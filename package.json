@@ -1,0 +1,13 @@
+{
+  "name": "pr-review-bot",
+  "version": "1.0.0",
+  "description": "GitHub Actions bot that posts structured review comments on every PR",
+  "main": "scripts/pr-review-bot.js",
+  "scripts": {
+    "review": "node scripts/pr-review-bot.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}
