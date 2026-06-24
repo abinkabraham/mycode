@@ -14,13 +14,13 @@ const {
   PR_NUMBER,
   REPO_OWNER,
   REPO_NAME,
-  PR_TITLE   = '',
-  PR_BODY    = '',
-  PR_AUTHOR  = '',
+  PR_TITLE = '',
+  PR_BODY = '',
+  PR_AUTHOR = '',
   BASE_SHA,
   HEAD_SHA,
-  BASE_REF   = 'main',
-  HEAD_REF   = '',
+  BASE_REF = 'main',
+  HEAD_REF = '',
 } = process.env;
 
 if (!GITHUB_TOKEN || !PR_NUMBER || !REPO_OWNER || !REPO_NAME) {
@@ -68,7 +68,7 @@ function getDiffStats() {
   try {
     const diffStat = execSync(`git diff --stat ${BASE_SHA}..${HEAD_SHA}`, { encoding: 'utf8' });
     const nameOnly = execSync(`git diff --name-only ${BASE_SHA}..${HEAD_SHA}`, { encoding: 'utf8' });
-    const diff     = execSync(`git diff ${BASE_SHA}..${HEAD_SHA}`, { encoding: 'utf8', maxBuffer: 5 * 1024 * 1024 });
+    const diff = execSync(`git diff ${BASE_SHA}..${HEAD_SHA}`, { encoding: 'utf8', maxBuffer: 5 * 1024 * 1024 });
     return { diffStat: diffStat.trim(), files: nameOnly.trim().split('\n').filter(Boolean), diff };
   } catch (e) {
     console.warn('git diff failed:', e.message);
@@ -88,19 +88,19 @@ function getCommitMessages() {
 const PATTERNS = {
   // Security
   hardcodedSecret: /(?:password|secret|api_?key|token)\s*=\s*["'][^"']{6,}["']/gi,
-  consoleLog:      /console\.(log|debug|info)\s*\(/g,
-  todoFixme:       /\b(TODO|FIXME|HACK|XXX)\b/g,
+  consoleLog: /console\.(log|debug|info)\s*\(/g,
+  todoFixme: /\b(TODO|FIXME|HACK|XXX)\b/g,
   noErrorHandling: /catch\s*\(\s*\w+\s*\)\s*\{\s*\}/g,
   // Node / JS
-  evalUse:         /\beval\s*\(/g,
-  requireSync:     /require\s*\(\s*["'](?:fs|path)["']\s*\)/g,
+  evalUse: /\beval\s*\(/g,
+  requireSync: /require\s*\(\s*["'](?:fs|path)["']\s*\)/g,
   // General
-  longLine:        /^.{121,}$/gm,
+  longLine: /^.{121,}$/gm,
   debugBreakpoint: /debugger\s*;/g,
 };
 
 function analyzeCode(diff, files) {
-  const issues   = [];
+  const issues = [];
   const suggestions = [];
 
   // File-type stats
@@ -145,7 +145,7 @@ function analyzeCode(diff, files) {
   }
 
   // Large diff check
-  const addedLines   = (diff.match(/^\+[^+]/gm) || []).length;
+  const addedLines = (diff.match(/^\+[^+]/gm) || []).length;
   const removedLines = (diff.match(/^-[^-]/gm) || []).length;
   if (addedLines > 500) {
     suggestions.push(`This PR adds **${addedLines} lines** — large PRs are harder to review. Consider splitting into smaller, focused changes.`);
@@ -153,7 +153,7 @@ function analyzeCode(diff, files) {
 
   // Test coverage hint
   const hasTests = files.some((f) => /test|spec/i.test(f));
-  const hasSrc   = files.some((f) => /\.(js|ts|jsx|tsx|py|go|java|rb|cs)$/.test(f));
+  const hasSrc = files.some((f) => /\.(js|ts|jsx|tsx|py|go|java|rb|cs)$/.test(f));
   if (hasSrc && !hasTests) {
     suggestions.push('No test files detected in this PR — consider adding or updating tests.');
   }
@@ -163,7 +163,7 @@ function analyzeCode(diff, files) {
 
 function severity(issues) {
   if (issues.length === 0) return '✅ No blocking issues found';
-  if (issues.length <= 2)  return '⚠️ Minor issues — please review';
+  if (issues.length <= 2) return '⚠️ Minor issues — please review';
   return '🚨 Multiple issues found — requires attention';
 }
 
