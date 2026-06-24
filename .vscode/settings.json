@@ -1,0 +1,74 @@
+{
+    "java.import.maven.enabled": true,
+    "java.import.gradle.enabled": false,
+    "extensions.ignoreRecommendations": true,
+    "workbench.startupEditor": "none",
+    "telemetry.telemetryLevel": "off",
+    "editor.fontSize": 14,
+    "editor.tabSize": 4,
+    "editor.formatOnSave": true,
+    "files.autoSave": "off",
+    "files.autoSaveDelay": 60000,
+    "window.restoreWindows": "none",
+    "files.exclude": {
+        "**/.theia": true,
+        "**/.git": true,
+        "**/.vscode": true,
+        "**/.gitignore": true,
+        "**/.copy_complete": true,
+        "**/.tekstac": true,
+        "**/chatlog.txt": true
+    },
+    "security.workspace.trust.enabled": false,
+    "security.workspace.trust.emptyWindow": false,
+    "security.workspace.trust.startupPrompt": "never",
+    "java.compile.nullAnalysis.mode": "disabled",
+    "java.server.launchMode": "Standard",
+    "java.jdt.ls.java.home": "/usr/lib/jvm/oracle-java-21",
+    "java.configuration.runtimes": [
+        {
+            "name": "JavaSE-1.8",
+            "path": "/usr/lib/jvm/oracle-java-8"
+        },
+        {
+            "name": "JavaSE-17",
+            "path": "/usr/lib/jvm/oracle-java-17",
+            "default": true
+        },
+        {
+            "name": "JavaSE-21",
+            "path": "/usr/lib/jvm/oracle-java-21"
+        }
+    ],
+    "java.configuration.detectJdksAtStart": true,
+    "redhat.telemetry.enabled": false,
+    "maven.executable.path": "/usr/bin/mvn",
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "spring.initializr.serviceUrl": [
+        "https://start.spring.io"
+    ],
+    "spring.initializr.defaultOpenProjectMethod": "Open",
+    "workspace.preserveWindow": true,
+    "sqldeveloper.sqlHistory.historyLimit": 500,
+    "sqldeveloper.telemetry.enabled": false,
+    "extensions.onlyShowVerifiedExtensions": true,
+    "window.openFoldersInNewWindow": "off",
+    "editor.minimap.enabled": false,
+    "git.openRepositoryInParentFolders": "never",
+    "java.debug.settings.forceBuildBeforeLaunch": true,
+    "java.debug.settings.hotCodeReplace": "never",
+    "notebook.output.textLineLimit": 200,
+    "debug.javascript.defaultRuntimeExecutable": {
+        "pwa-node": "node"
+    },
+    "http.proxy": "",
+    "liveServer.settings.donotShowInfoMsg": true,
+    "http.proxySupport": "off",
+    "http.proxyStrictSSL": false,
+    "python.languageServer": "None",
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.diagnosticMode": "workspace",
+    "python.analysis.autoSearchPaths": true,
+    "python.analysis.useLibraryCodeForTypes": true,
+    "workbench.colorTheme": "light"
+}
