@@ -1,5 +1,5 @@
 # import os
-# os.environ["GOOGLE_API_KEY"] = "AQ.Ab8RN6KPw3zLfpc5qyST8s9sbyXwHM09vlamM1aaqyFEZo_EDg"
+# os.environ["GOOGLE_API_KEY"] = "Your google API KEY"
 
 from typing import TypedDict
 from langgraph.graph import StateGraph, START, END
