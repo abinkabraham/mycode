@@ -1,6 +1,6 @@
 #import os
 # Replace with your actual Gemini API key
-#os.environ["GOOGLE_API_KEY"] = "AQ.Ab8RN6KPw3zLfpc5qyST8s9sbyXwHM09vlamM1aaqyFEZo_EDg"
+#os.environ["GOOGLE_API_KEY"] = "Your google API KEY"
 
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate
